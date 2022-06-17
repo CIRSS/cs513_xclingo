@@ -1,5 +1,5 @@
 
-%!trace_rule {"% is the parent of %",X,Y} parent(X,Y). 
+%!trace {"% is the parent of %",X,Y} parent(X,Y).
 parent(william, john).
 parent(john, james).
 parent(james, bill).
@@ -20,8 +20,7 @@ grandparent(X,Y,Z) :- parent(X, Z), parent(Z, Y).
 father(X,Y)  :-     parent(X, Y), male(X).
 mother(X,Y)  :-     parent(X, Y), female(X).
 brother(X,Y) :-     parent(P, X), parent(P, Y), male(X), X != Y.
-
 %!trace {"% is the sister of %",X,Y} sister(X,Y).
-sister(X,Y)  :-  parent(P, X), parent(P, Y), female(X), X != Y.
+sister(X,Y)  :-     parent(P, X), parent(P, Y), female(X), X != Y.
 
 %!show_trace sister(X,Y).
